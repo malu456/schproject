@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script>
+
+            function random_function()
+            {
+                var a=document.getElementById("input").value;
+                if(a==="computer science")
+                {
+                    var arr=["select","IT","Engg","BCA"];
+                }
+                else if(a==="commerce")
+                {
+                    var arr=["select","BCOM","BBA","CA"];
+                }
+                 else if(a==="biomaths")
+                {
+                    var arr=["select","Engg","medicine","bsc"];
+                }
+                else if(a==="biocomputer")
+                {
+                    var arr=["select","BCA","medicine","BBA"];
+                }
+                else if(a==="humanities")
+                {
+                    var arr=["select","journalism","sociology","BBA"];
+                }
+
+                var string="";
+
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("output").innerHTML=string;
+            }
+        </script>
+</head>
+
+<body style="background-color: pink;">
+
+<h2 style="font-size:30px">Form</h2>
+
+<form action="form"  method="POST">
+     {% csrf_token %}
+
+
+    <label for="name">Name</label>
+    <input type="text" name="name"><br>
+     <label for="dob">Dob</label>
+    <input type="date" name="dob"><br>
+     <label for="Age">Age</label>
+    <input type="text" name="age" ><br>
+     <label for="Gender">Gender: </label>
+    <input type="radio" name="gender" value="male" > Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other"> Other<br>
+    <label for="phonenumber">phonenumber</label>
+    <input type="text" name="phnum"><br>
+     <label for="email">email</label>
+    <input type="email" name="email"><br>
+     <label for="address">Address: </label><br>
+    <textarea name="address" id="address" cols="30" rows="5"></textarea>
+    <br>
+    <label for="department">Department</label>
+    <select id="input" name="department" onchange="random_function()">
+        <option>select option</option>
+        <option>computer science</option>
+        <option>commerce</option>
+        <option>biomaths</option>
+        <option>biocomputer</option>
+        <option>humanities</option>
+        </select>
+       <label for="course">  courses</label>
+    <select id="output" name="courses" onchange="random_function1()">
+    </select>
+
+    <br>
+     <label for="purpose">purpose</label>
+    <select name="purpose" id="purpose">
+        <option
+            value="select">select</option>
+        <option
+            value="enquiry">enquiry</option>
+         <option
+            value="place order">placeorder</option>
+         <option
+            value="return">return</option>
+    </select><br>
+     <label for="MaterialsProvide">MaterialsProvide :</label>
+        <input type="checkbox" name="MaterialsProvide" value="debit note book"> debit note book
+         <input type="checkbox" name="MaterialsProvide" value="pen"> pen
+          <input type="checkbox" name="MaterialsProvide" value="exam papers"> exam paper
+    <br>
+    <button type="submit" name="submit">submit</button>
+   <a href="{% url 'demo' %}"><button type="submit" name="logout">logout </a>
+</form>
+<!-- {% if messages %}-->
+<!--<ul class="messages">-->
+<!--    {% for message in messages %}-->
+<!--    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<!-- {% endif %}-->
+</body>
+</html>
